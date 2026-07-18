@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" href="/blog.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>博客前台</title>
+    <!-- 运行时环境变量配置 - 容器部署时会被替换 -->
+    <script type="module" src="./public/assets/env-config.js"></script>
+    <!-- 卡片高度测量工具 -->
+    <script src="/card-height-logger.js"></script>
+    <meta name="description" content="基于React和NestJS构建的个人博客系统" />
+    <meta name="keywords" content="博客,React,NestJS,前端,后端,全栈" />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #1a1f29;
+      }
+      #root {
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

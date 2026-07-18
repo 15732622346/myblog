@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#23a6d5" />
+    <meta
+      name="description"
+      content="个人博客网站 - 分享技术与生活"
+    />
+    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <title>个人博客</title>
+    <script>
+      // 直接触发alert确保弹窗会显示
+      alert("页面加载初始弹窗测试");
+      
+      // 立即设置背景颜色的脚本
+      (function() {
+        // 强制设置蓝色背景
+        document.documentElement.style.backgroundColor = '#23a6d5';
+        
+        // 动态创建并插入样式
+        var style = document.createElement('style');
+        style.textContent = `
+          html, body { 
+            background-color: #23a6d5 !important; 
+          }
+          #tsparticles canvas {
+            background-color: #23a6d5 !important;
+          }
+        `;
+        document.head.appendChild(style);
+        
+        // 监控黑色背景并修复
+        setInterval(function() {
+          document.documentElement.style.backgroundColor = '#23a6d5';
+          document.body.style.backgroundColor = '#23a6d5';
+          
+          // 检测粒子背景
+          var tsParticles = document.getElementById('tsparticles');
+          if (tsParticles) {
+            var canvas = tsParticles.querySelector('canvas');
+            if (canvas) {
+              canvas.style.backgroundColor = '#23a6d5';
+            }
+          }
+        }, 500);
+      })();
+    </script>
+    <style>
+      /* 确保在CSS加载前背景颜色就是正确的 */
+      html, body {
+        background-color: #23a6d5 !important;
+        margin: 0;
+        padding: 0;
+      }
+      /* 提供加载动画 */
+      .initial-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #23a6d5;
+        z-index: 9999;
+        transition: opacity 0.5s ease-in-out;
+      }
+      .initial-loader.loaded {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .loader-spinner {
+        width: 50px;
+        height: 50px;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+      }
+      @keyframes spin {
+        to { transform: rotate(360deg); }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>您需要启用JavaScript来运行此应用。</noscript>
+    
+    <!-- 直接在HTML中添加一个测试按钮 -->
+    <button 
+      id="test-alert-btn" 
+      onclick="alert('背景测试按钮点击')" 
+      style="position:fixed; top:10px; right:10px; z-index:99999; background:#ff0; color:#000; padding:5px; border:none;"
+    >
+      测试弹窗
+    </button>
+    
+    <!-- 添加初始加载动画 -->
+    <div id="initial-loader" class="initial-loader">
+      <div class="loader-spinner"></div>
+    </div>
+    <div id="root"></div>
+    <script>
+      // 立即检测背景颜色
+      function checkBackgroundColor() {
+        try {
+          var htmlStyles = window.getComputedStyle(document.documentElement);
+          var bodyStyles = window.getComputedStyle(document.body);
+          var htmlBgColor = htmlStyles.backgroundColor;
+          var bodyBgColor = bodyStyles.backgroundColor;
+          var bodyBgImage = bodyStyles.backgroundImage;
+          
+          var message = "当前页面背景样式:\n";
+          message += "HTML背景色: " + htmlBgColor + "\n";
+          message += "Body背景色: " + bodyBgColor + "\n";
+          message += "Body背景图: " + bodyBgImage;
+          
+          alert(message);
+        } catch(e) {
+          console.error("检测背景色时发生错误:", e);
+          alert("检测背景色时发生错误: " + e.message);
+        }
+      }
+      
+      // 立即执行一次检查
+      setTimeout(function() {
+        checkBackgroundColor();
+      }, 100);
+      
+      // 页面加载完成后再次检查并移除加载动画
+      window.addEventListener('load', function() {
+        // 强制设置一次背景色
+        document.documentElement.style.backgroundColor = '#23a6d5';
+        document.body.style.backgroundColor = '#23a6d5';
+        
+        setTimeout(function() {
+          document.getElementById('initial-loader').classList.add('loaded');
+          
+          // 完全移除元素
+          setTimeout(function() {
+            var loader = document.getElementById('initial-loader');
+            if(loader && loader.parentNode) {
+              loader.parentNode.removeChild(loader);
+            }
+            
+            // 检测React加载后的背景
+            setTimeout(function() {
+              checkBackgroundColor();
+              
+              // 检测粒子背景
+              var tsParticles = document.getElementById('tsparticles');
+              if (tsParticles) {
+                var tsParticlesCanvas = tsParticles.querySelector('canvas');
+                var tsInfo = "粒子背景信息:\n";
+                tsInfo += "粒子元素存在: 是\n";
+                
+                if (tsParticlesCanvas) {
+                  var tsStyles = window.getComputedStyle(tsParticlesCanvas);
+                  tsInfo += "Canvas背景色: " + tsStyles.backgroundColor;
+                  
+                  // 强制设置Canvas背景色
+                  tsParticlesCanvas.style.backgroundColor = '#23a6d5';
+                } else {
+                  tsInfo += "Canvas元素: 未找到";
+                }
+                
+                alert(tsInfo);
+              } else {
+                alert("粒子背景未加载");
+              }
+            }, 1000);
+          }, 300);
+        }, 300);
+      });
+    </script>
+  </body>
+</html> 

@@ -1,0 +1,12 @@
+-- 删除旧的外键约束（如果存在）
+SET FOREIGN_KEY_CHECKS=0;
+ALTER TABLE resumes DROP FOREIGN KEY IF EXISTS FK_resumes_user_id;
+SET FOREIGN_KEY_CHECKS=1;
+
+-- 添加新的外键约束
+ALTER TABLE resumes
+ADD CONSTRAINT FK_resumes_user_id
+FOREIGN KEY (user_id)
+REFERENCES users(id)
+ON DELETE CASCADE
+ON UPDATE CASCADE; 

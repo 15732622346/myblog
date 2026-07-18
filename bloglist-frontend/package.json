@@ -1,0 +1,51 @@
+{
+  "name": "bloglist-frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --mode development",
+    "build": "vite build --mode production",
+    "build:dev": "vite build --mode development",
+    "build:prod": "vite build --mode production",
+    "lint": "eslint .",
+    "preview": "vite preview --mode production",
+    "typecheck": "tsc -b"
+  },
+  "dependencies": {
+    "@ant-design/icons": "^6.0.0",
+    "@tailwindcss/typography": "^0.5.16",
+    "@tanstack/react-query": "^5.70.0",
+    "@types/markdown-it": "^14.1.2",
+    "@types/marked": "^6.0.0",
+    "@types/node": "^20.11.30",
+    "@types/react-router-dom": "^5.3.3",
+    "antd": "^5.24.5",
+    "axios": "^1.8.4",
+    "markdown-it": "^14.1.0",
+    "marked": "^15.0.7",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-markdown": "^10.1.0",
+    "react-router-dom": "^7.4.1",
+    "rehype-raw": "^7.0.0",
+    "rehype-sanitize": "^6.0.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.21.0",
+    "@types/react": "^19.1.1",
+    "@types/react-dom": "^19.1.2",
+    "@vitejs/plugin-react": "^4.2.0",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.21.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "eslint-plugin-react-refresh": "^0.4.19",
+    "globals": "^15.15.0",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^4.0.17",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.24.1",
+    "vite": "^5.0.0"
+  }
+}
