@@ -1,3 +1,9 @@
+import * as dotenv from 'dotenv';
+import * as path from 'path';
+
+const envFile = process.env.NODE_ENV === 'production' ? '.env.production' : '.env.development';
+dotenv.config({ path: path.resolve(process.cwd(), envFile) });
+
 export const minioConfig = {
   endPoint: process.env.MINIO_ENDPOINT || '192.168.253.128',
   port: parseInt(process.env.MINIO_PORT || '9000', 10),

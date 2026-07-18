@@ -90,7 +90,7 @@ const HomePage = () => {
         setLoading(true);
         setServerError(false);
         // 获取一个示例用户的文章，你可以替换为实际的用户名
-        const response = await api.get(`/posts/public/by-username/admin`);
+        const response = await api.get(`/posts/public/by-username/lijiangtao1`);
         const data: PostsResponse = response.data;
         setPosts(data.items);
         setUser(data.user);
