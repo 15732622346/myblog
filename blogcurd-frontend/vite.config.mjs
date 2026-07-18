@@ -12,6 +12,7 @@ module.exports = defineConfig(({ mode }) => {
     console.log(`API地址: ${env.VITE_API_URL}`);
     return {
         plugins: [react()],
+        base: isProd ? '/admin/' : '/',
         server: {
             port: 5714, // 强制使用5714端口
             strictPort: true, // 端口被占用时,不自动尝试下一个可用端口,而是直接抛出错误

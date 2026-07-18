@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => {
   
   return {
     plugins: [react()],
+    base: isProd ? '/admin/' : '/',
     server: {
       port: 5714,
       strictPort: true,
